@@ -226,15 +226,21 @@ function PropertDecorator(target, propertyName) {
 }
 function AccessorDecorator(target, name, descriptor) {
     console.log("AccessorDecorator Decorator");
-    console.log(target, name, descriptor);
+    console.log("target", target);
+    console.log("name", name);
+    console.log("Property Descriptor", descriptor);
 }
 function functionDecorator(target, name, descriptor) {
     console.log("MethodDecorator Decorator");
-    console.log(target, name, descriptor);
+    console.log("target", target);
+    console.log("name", name);
+    console.log("Property Descriptor", descriptor);
 }
 function ParamaeterDecorator(target, name, position) {
     console.log("ParamaeterDecorator Decorator");
-    console.log(target, name, position);
+    console.log("target", target);
+    console.log("name", name);
+    console.log("Position", position);
 }
 // Dedorator functions are executed in the reverse order. i.e bottom up
 let Person1 = class Person1 {
@@ -274,7 +280,7 @@ const person1Obj = new Person1();
 function WithTemplateSome(template, hookId) {
     return function (originalConstructor) {
         return class extends originalConstructor {
-            constructor() {
+            constructor(...args) {
                 super();
                 console.log("Executing after instatntition");
                 const element = document.querySelector(`#${hookId}`);

@@ -329,17 +329,23 @@ function PropertDecorator(target: any, propertyName : string | Symbol) {
 
 function AccessorDecorator(target: any, name : string, descriptor: PropertyDescriptor) {
     console.log("AccessorDecorator Decorator");
-    console.log(target, name, descriptor);
+    console.log("target", target);
+    console.log("name", name);
+    console.log("Property Descriptor", descriptor);
 }
 
 function functionDecorator(target: any, name : string, descriptor: PropertyDescriptor) {
     console.log("MethodDecorator Decorator");
-    console.log(target, name, descriptor);
+    console.log("target", target);
+    console.log("name", name);
+    console.log("Property Descriptor", descriptor);
 }
 
 function ParamaeterDecorator(target: any, name : string | Symbol, position: number) {
     console.log("ParamaeterDecorator Decorator");
-    console.log(target, name, position);
+    console.log("target", target);
+    console.log("name", name);
+    console.log("Position", position);
 }
 // Dedorator functions are executed in the reverse order. i.e bottom up
 @Logger
@@ -368,7 +374,7 @@ const person1Obj = new Person1();
 function WithTemplateSome(template: string, hookId : string) {
     return function<T extends {new(...args : any[]) : {}}>(originalConstructor: T) {
         return class extends originalConstructor {
-            constructor() {
+            constructor(...args : any[]) {
                 super();
                 console.log("Executing after instatntition");
                 const element = document.querySelector(`#${hookId}`);
@@ -400,3 +406,4 @@ class Person2 {
 
 const person2Obj = new Person2();
 // Decorators in which you can return something is Method(returns PropertyDescriptor). Class and accessors(PropertyDescriptor)
+// use tsc -p ./tsconfig.json to apply the config and generate Javascript
