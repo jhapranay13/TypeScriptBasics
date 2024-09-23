@@ -309,3 +309,4 @@ Person2 = __decorate([
 ], Person2);
 const person2Obj = new Person2();
 // Decorators in which you can return something is Method(returns PropertyDescriptor). Class and accessors(PropertyDescriptor)
+// use tsc -p ./tsconfig.json to apply the config and generate Javascript
